@@ -19,6 +19,28 @@ setTimeout(() => {
     topNavBar.style.width = "80%"
 }, 1200);
 
+let bottomNavBarLeft = document.getElementById("bottom_nav_bar_left")
+let bottomNavBarRight = document.getElementById("bottom_nav_bar_right")
+
+function bottomNav() {
+    bottomNavBarRight.style.display = "flex"
+    bottomNavBarRight.id = "bottom_right_anim"
+    
+    bottomNavBarLeft.id = "bottom_left_anim"
+    bottomNavBarLeft.innerHTML = `
+        <div class="bottom_nav_texts_left" id="bottom_nav_texts_left">
+            <p>Terminal 2</p>
+            <p id="bottom_location_p">Delhi</p>
+            <p id="bottom_weather_p">21</p>
+        </div>
+    `
+
+    setTimeout(() => {
+        bottomNavBarLeft.style.width = "35%"
+    }, 1200);
+}
+
+
 function dragElement(element) {
     let initialX = 0
     let initialY = 0
@@ -64,6 +86,7 @@ dragElement(welcomeSection)
 
 function closeWindow(element) {
     element.style.display = "none"
+    bottomNav()
 }
 
 let welcomeClose = document.getElementById("close_icon")

@@ -86,12 +86,11 @@ body {
     position: absolute;
     bottom: 20px;
     left: 20px;
+    right: 20px;
+    display: flex;
 }
 
 .bottom_nav_bar_left {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
     width: 50px;
     height: 50px;
     background-color: var(--textcolor4);
@@ -100,16 +99,43 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+}
 
+.bottom_nav_bar_lines_left {
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     flex-direction: column;
 }
 
-.bottom_nav_bar_lines {
+#bottom_nav_bar_line_left {
     width: 20px;
     height: 4px;
     margin-top: 3px;
     background-color: black;
 }
+
+.bottom_nav_texts_left {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    font-weight: 600;
+}
+
+.bottom_nav_bar_right {
+    background-color: var(--textcolor2);
+    width: 62%;
+    height: 50px;
+    right: 0;
+    position: absolute;
+    border-radius: var(--border-radius2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+}
+
 
 /* animtion section */
 #top_nav_show_anim {
@@ -136,5 +162,29 @@ body {
     }
     tp {
         width: 80%;
+    }
+}
+
+#bottom_left_anim {
+    animation: bottom_left_anim 1.2s;
+}
+
+@keyframes bottom_left_anim {
+    to {
+        width: 35%;
+    }
+}
+
+#bottom_right_anim {
+    animation: bottom_right_anim 1.2s ;
+}
+
+@keyframes bottom_right_anim {
+    from {
+        transform: translateY(100px);
+        width: 50px;
+    }
+    to {
+        width: 62%;
     }
 }
