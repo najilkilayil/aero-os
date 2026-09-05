@@ -110,3 +110,31 @@ body {
     margin-top: 3px;
     background-color: black;
 }
+
+/* animtion section */
+#top_nav_show_anim {
+    animation: top_nav_show 1.2s;
+}
+
+@keyframes top_nav_show {
+    from {
+        width: 20%;
+        top: -100px;
+    }
+    to {
+        width: 20%;
+    }
+}
+
+#top_nav_full_anim {
+    animation: top_nav_full_width 1.2s;
+}
+
+@keyframes top_nav_full_width {
+    from {
+        width: 20%;
+    }
+    tp {
+        width: 80%;
+    }
+}

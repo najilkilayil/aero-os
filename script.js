@@ -10,6 +10,15 @@ function updateTime() {
     timeP.innerHTML = currentTime
 }
 
+let topNavBar = document.getElementById("top_nav_bar")
+
+topNavBar.id = "top_nav_show_anim"
+topNavBar.style.width = "20%"
+setTimeout(() => {
+    topNavBar.id = "top_nav_full_anim"
+    topNavBar.style.width = "80%"
+}, 1200);
+
 function dragElement(element) {
     let initialX = 0
     let initialY = 0
