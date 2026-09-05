@@ -10,9 +10,49 @@
     --textcolor2: orange;
     --textcolor3: yellow;
     --textcolor4: blue;
-    --border-radius1: 16px;
+    --border-radius1: 26px;
 }
 
 body {
     background: var(--bg);
+    height: 100vh;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    user-select: none;
+}
+
+/* welcome section */
+.welcome {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: var(--textcolor1);
+    border-radius: var(--border-radius1);
+}
+
+.welcome_content {
+    margin-top: 0;
+    padding: 30px;
+    border-radius: var(--border-radius1);
+    border: 3px solid black;
+}
+
+.welcomeheader {
+    width: 100%;
+    height: 40px;
+    background: var(--textcolor2);
+    border-radius: 16px 16px 0 0;
+    display: flex;
+    align-items: center;
+    cursor: move;
+}
+
+.close_icon {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    background: red;
+    border-radius: 20px;
+    margin-left: 20px;
 }
