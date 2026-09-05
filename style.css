@@ -11,6 +11,7 @@
     --textcolor3: yellow;
     --textcolor4: blue;
     --border-radius1: 26px;
+    --border-radius2: 16px;
 }
 
 body {
@@ -21,7 +22,7 @@ body {
     user-select: none;
 }
 
-/* welcome section */
+/* welcome */
 .welcome {
     position: absolute;
     top: 50%;
@@ -55,4 +56,26 @@ body {
     background: red;
     border-radius: 20px;
     margin-left: 20px;
+}
+
+/* top nav bar */
+.top_nav_bar {
+    background: var(--textcolor3);
+    width: 80%;
+    height: 50px;
+    position: absolute;
+    left: 50%;
+    top: 20px;
+    transform: translateX(-50%);
+    border-radius: var(--border-radius2);
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+    padding-right: 20px;
+    justify-content: space-between;
+}
+
+.top_nav_bar p {
+    font-size: 18px;
+    font-weight: 600;
 }
