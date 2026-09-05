@@ -79,3 +79,34 @@ body {
     font-size: 18px;
     font-weight: 600;
 }
+
+/* bottom nav bar */
+.bottom_nav_bar {
+    background: var(--textcolor3);
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+}
+
+.bottom_nav_bar_left {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    width: 50px;
+    height: 50px;
+    background-color: var(--textcolor4);
+    border-radius: var(--border-radius2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    flex-direction: column;
+}
+
+.bottom_nav_bar_lines {
+    width: 20px;
+    height: 4px;
+    margin-top: 3px;
+    background-color: black;
+}
