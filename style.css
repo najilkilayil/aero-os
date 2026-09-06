@@ -15,7 +15,8 @@
 }
 
 body {
-    background: var(--bg);
+    background: url(wal1.jpg);
+    background-size: cover;
     height: 100vh;
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -176,7 +177,7 @@ body {
 }
 
 #bottom_right_anim {
-    animation: bottom_right_anim 1.2s ;
+    animation: bottom_right_anim 1.2s;
 }
 
 @keyframes bottom_right_anim {
@@ -186,5 +187,20 @@ body {
     }
     to {
         width: 62%;
+    }
+}
+
+#fade_out_anim {
+    animation: fade_out 1.2s;
+}
+
+@keyframes fade_out {
+    from {
+        opacity: 1;
+    }
+    to {
+        top: 90%;
+        opacity: 0;
+        display: none;
     }
 }

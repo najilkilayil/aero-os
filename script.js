@@ -40,6 +40,13 @@ function bottomNav() {
     }, 1200);
 }
 
+setTimeout(() => {
+    bottomNav()
+    welcomeSection.id = "fade_out_anim"
+    setTimeout(() => {
+        welcomeSection.style.display = "none"
+    }, 1200);
+}, 3000);
 
 function dragElement(element) {
     let initialX = 0
