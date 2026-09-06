@@ -275,7 +275,7 @@ body {
     border: 1px solid #d5d6d7;
 }
 
-.overview_content_departure {
+.overview_content_departure, .overview_content_arrival {
     margin-top: 30px;
     margin-left: -20px;
     margin-right: -20px;
@@ -285,13 +285,21 @@ body {
     background: var(--glass-content);
 }
 
-.overview_content_departure table {
+.overview_content_departure {
+    display: block;
+}
+
+.overview_content_arrival {
+    display: none;
+}
+
+.overview_content_departure table, .overview_content_arrival table {
     width: 100%;
     text-align: center;
     color: var(--text);
 }
 
-.overview_content_departure table th {
+.overview_content_departure table th, .overview_content_arrival table th {
     text-transform: uppercase;
 }
 

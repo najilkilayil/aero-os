@@ -145,6 +145,27 @@ function createWindows(tem) {
         })
     }
 
+    let newDeparture = newWindows.querySelector(".overview_departure")
+    let newArrival = newWindows.querySelector(".overview_arrival")
+    let newContentDeparture = newWindows.querySelector(".overview_content_departure")
+    let newContentArrival = newWindows.querySelector(".overview_content_arrival")
+
+    newArrival.addEventListener("click", function() {
+        newContentArrival.style.display = "block"
+        newContentDeparture.style.display = "none"
+
+        newArrival.style.border = "1px solid #d5d6d7"
+        newDeparture.style.border = "1px solid rgba(255, 255, 255, 0.12)"
+    })
+
+    newDeparture.addEventListener("click", function() {
+        newContentArrival.style.display = "none"
+        newContentDeparture.style.display = "block"
+
+        newDeparture.style.border = "1px solid #d5d6d7"
+        newArrival.style.border = "1px solid rgba(255, 255, 255, 0.12)"
+    })
+
     return newWindows
 }
 
@@ -159,7 +180,7 @@ overviewIcon.addEventListener("click", function() {
 let departureFlights = [
     {
         flight: "AI203",
-        destination: "Tokyo",
+        place: "Tokyo",
         gate: "A12",
         time: "17:20",
         icon: `<div id="status_green" class="status"></div>`,
@@ -167,7 +188,7 @@ let departureFlights = [
     },
     {
         flight: "EK521",
-        destination: "Dubai",
+        place: "Dubai",
         gate: "B07",
         time: "18:05",
         icon: `<div id="status_green" class="status"></div>`,
@@ -175,7 +196,7 @@ let departureFlights = [
     },
     {
         flight: "6E742",
-        destination: "Mumbai",
+        place: "Mumbai",
         gate: "C03",
         time: "18:30",
         icon: `<div id="status_blue" class="status"></div>`,
@@ -183,7 +204,7 @@ let departureFlights = [
     },
     {
         flight: "QR517",
-        destination: "Doha",
+        place: "Doha",
         gate: "A08",
         time: "19:10",
         icon: `<div id="status_green" class="status"></div>`,
@@ -191,7 +212,7 @@ let departureFlights = [
     },
     {
         flight: "BA142",
-        destination: "London",
+        place: "London",
         gate: "D14",
         time: "19:45",
         icon: `<div id="status_yellow" class="status"></div>`,
@@ -199,7 +220,7 @@ let departureFlights = [
     },
     {
         flight: "SQ424",
-        destination: "Singapore",
+        place: "Singapore",
         gate: "B11",
         time: "20:15",
         icon: `<div id="status_green" class="status"></div>`,
@@ -207,7 +228,7 @@ let departureFlights = [
     },
     {
         flight: "AI672",
-        destination: "Delhi",
+        place: "Delhi",
         gate: "C09",
         time: "20:40",
         icon: `<div id="status_blue" class="status"></div>`,
@@ -215,7 +236,7 @@ let departureFlights = [
     },
     {
         flight: "EY273",
-        destination: "Abu Dhabi",
+        place: "Abu Dhabi",
         gate: "A05",
         time: "21:05",
         icon: `<div id="status_green" class="status"></div>`,
@@ -223,7 +244,7 @@ let departureFlights = [
     },
     {
         flight: "LH759",
-        destination: "Frankfurt",
+        place: "Frankfurt",
         gate: "D06",
         time: "21:35",
         icon: `<div id="status_red" class="status"></div>`,
@@ -231,12 +252,95 @@ let departureFlights = [
     },
     {
         flight: "6E318",
-        destination: "Bengaluru",
+        place: "Bengaluru",
         gate: "C15",
         time: "22:00",
         icon: `<div id="status_grey" class="status"></div>`,
         status: "SCHEDULED"
     }
+]
+
+let arrivalFlights = [
+    {
+        flight: "EK520",
+        place: "Dubai",
+        gate: "B07",
+        time: "17:35",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "LANDED",
+    },
+    {
+        flight: "AI202",
+        place: "Tokyo",
+        gate: "A12",
+        time: "18:10",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "ON TIME",
+    },
+    {
+        flight: "QR516",
+        place: "Doha",
+        gate: "A08",
+        time: "18:45",
+        icon: `<div id="status_blue" class="status"></div>`,
+        status: "APPROACHING",
+    },
+    {
+        flight: "6E741",
+        place: "Mumbai",
+        gate: "C03",
+        time: "19:05",
+        icon: `<div id="status_blue" class="status"></div>`,
+        status: "DELAYED",
+    },
+    {
+        flight: "SQ423",
+        place: "Singapore",
+        gate: "B11",
+        time: "19:30",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "LANDED",
+    },
+    {
+        flight: "BA141",
+        place: "London",
+        gate: "D14",
+        time: "20:00",
+        icon: `<div id="status_blue" class="status"></div>`,
+        status: "APPROACHING",
+    },
+    {
+        flight: "AI671",
+        place: "Mumbai",
+        gate: "C09",
+        time: "20:25",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "ON TIME",
+    },
+    {
+        flight: "EY272",
+        place: "Abu Dhabi",
+        gate: "A05",
+        time: "20:50",
+        icon: `<div id="status_blue" class="status"></div>`,
+        status: "DELAYED",
+    },
+    {
+        flight: "LH758",
+        place: "Frankfurt",
+        gate: "D06",
+        time: "21:20",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "LANDED",
+    },
+    {
+        flight: "6E317",
+        place: "Bengaluru",
+        gate: "C15",
+        time: "21:55",
+        icon: `<div id="status_blue" class="status"></div>`,
+        status: "APPROACHING",
+    },
 ]
 
 function loadFlightTable(data, tableBody) {
@@ -246,7 +350,7 @@ function loadFlightTable(data, tableBody) {
         tableBody.innerHTML += `
             <tr>
                 <td>${flight.flight}</td>
-                <td>${flight.destination}</td>
+                <td>${flight.place}</td>
                 <td>${flight.gate}</td>
                 <td>${flight.time}</td>
                 <td>${flight.icon}</td>
@@ -256,5 +360,7 @@ function loadFlightTable(data, tableBody) {
 }
 
 let departureTableBody = document.getElementById("departure_table_body")
+let arrivalTableBody = document.getElementById("arrival_table_body")
 
 loadFlightTable(departureFlights, departureTableBody)
+loadFlightTable(arrivalFlights, arrivalTableBody)
