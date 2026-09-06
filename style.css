@@ -234,7 +234,7 @@ body {
 
 /* overview */
 .overview {
-    display: block;
+    display: none;
     width: 40%;
 }
 

@@ -109,6 +109,7 @@ function closeWindow(element) {
     }, 1200);
 }
 
+let windowOffset = 0
 function createWindows(tem) {
     let newWindows = tem.cloneNode(true)
 
@@ -116,6 +117,15 @@ function createWindows(tem) {
     document.body.appendChild(newWindows)
     newWindows.style.display = "block"
     
+    windowOffset += 30
+    if (windowOffset > 180) {
+        windowOffset = 0
+    }
+    
+    newWindows.style.top = `calc(50% + ${windowOffset}px)`
+    newWindows.style.left = `calc(50% + ${windowOffset}px)`
+    newWindows.style.transform = "translate(-50%, -50%)"
+
     dragElement(newWindows)
 
     let closeIcon = newWindows.querySelector(".close_icon")
@@ -127,7 +137,6 @@ function createWindows(tem) {
 
     return newWindows
 }
-
 
 overviewIcon.addEventListener("click", function() {
     createWindows(overviewSection)
