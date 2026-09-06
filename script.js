@@ -152,6 +152,109 @@ overviewIcon.addEventListener("click", function() {
     createWindows(overviewSection)
 })
 
-overviewClose.addEventListener("click", function() {
-    closeWindow(overviewSection)
-})
+// overviewClose.addEventListener("click", function() {
+//     closeWindow(overviewSection)
+// })
+
+let departureFlights = [
+    {
+        flight: "AI203",
+        destination: "Tokyo",
+        gate: "A12",
+        time: "17:20",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "BOARDING"
+    },
+    {
+        flight: "EK521",
+        destination: "Dubai",
+        gate: "B07",
+        time: "18:05",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "ON TIME"
+    },
+    {
+        flight: "6E742",
+        destination: "Mumbai",
+        gate: "C03",
+        time: "18:30",
+        icon: `<div id="status_blue" class="status"></div>`,
+        status: "DELAYED"
+    },
+    {
+        flight: "QR517",
+        destination: "Doha",
+        gate: "A08",
+        time: "19:10",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "ON TIME"
+    },
+    {
+        flight: "BA142",
+        destination: "London",
+        gate: "D14",
+        time: "19:45",
+        icon: `<div id="status_yellow" class="status"></div>`,
+        status: "FINAL CALL"
+    },
+    {
+        flight: "SQ424",
+        destination: "Singapore",
+        gate: "B11",
+        time: "20:15",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "ON TIME"
+    },
+    {
+        flight: "AI672",
+        destination: "Delhi",
+        gate: "C09",
+        time: "20:40",
+        icon: `<div id="status_blue" class="status"></div>`,
+        status: "DELAYED"
+    },
+    {
+        flight: "EY273",
+        destination: "Abu Dhabi",
+        gate: "A05",
+        time: "21:05",
+        icon: `<div id="status_green" class="status"></div>`,
+        status: "BOARDING"
+    },
+    {
+        flight: "LH759",
+        destination: "Frankfurt",
+        gate: "D06",
+        time: "21:35",
+        icon: `<div id="status_red" class="status"></div>`,
+        status: "CANCELLED"
+    },
+    {
+        flight: "6E318",
+        destination: "Bengaluru",
+        gate: "C15",
+        time: "22:00",
+        icon: `<div id="status_grey" class="status"></div>`,
+        status: "SCHEDULED"
+    }
+]
+
+function loadFlightTable(data, tableBody) {
+    tableBody.innerHTML = ""
+    
+    data.forEach(flight => {
+        tableBody.innerHTML += `
+            <tr>
+                <td>${flight.flight}</td>
+                <td>${flight.destination}</td>
+                <td>${flight.gate}</td>
+                <td>${flight.time}</td>
+                <td>${flight.icon}</td>
+                <td>${flight.status}</td>
+        `
+    });
+}
+
+let departureTableBody = document.getElementById("departure_table_body")
+
+loadFlightTable(departureFlights, departureTableBody)
