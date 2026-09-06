@@ -43,6 +43,7 @@ function bottomNav() {
 setTimeout(() => {
     bottomNav()
     welcomeSection.id = "fade_out_anim"
+    icon.id = "fade_in_anim"
     setTimeout(() => {
         welcomeSection.style.display = "none"
     }, 1200);
@@ -88,6 +89,7 @@ function dragElement(element) {
 }
 
 let welcomeSection = document.getElementById("welcome")
+let icon = document.querySelector(".icon")
 
 dragElement(welcomeSection)
 
