@@ -77,13 +77,27 @@ body {
     cursor: move;
 }
 
-.close_icon {
+/* window icons */
+.close_icon, .mini_icon, .full_icon {
     cursor: pointer;
     width: 20px;
     height: 20px;
-    background: red;
     border-radius: 20px;
+}
+
+.close_icon {
+    background: red;
     margin-left: 20px;
+}
+
+.mini_icon {
+    background: yellow;
+    margin-left: 4px;
+}
+
+.full_icon {
+    background: green;
+    margin-left: 4px;
 }
 
 /* top nav bar */
@@ -220,7 +234,7 @@ body {
 
 /* overview */
 .overview {
-    display: none;
+    display: block;
     width: 40%;
 }
 
