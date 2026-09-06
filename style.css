@@ -238,6 +238,15 @@ body {
     width: 40%;
 }
 
+.heading {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: var(--text);
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
 /* animtion section */
 #top_nav_show_anim {
     animation: top_nav_show 1.2s;

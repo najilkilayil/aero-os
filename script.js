@@ -109,9 +109,28 @@ function closeWindow(element) {
     }, 1200);
 }
 
+function createWindows(tem) {
+    let newWindows = tem.cloneNode(true)
+
+    newWindows.id = tem.id + "_" + Date.now()
+    document.body.appendChild(newWindows)
+    newWindows.style.display = "block"
+    
+    dragElement(newWindows)
+
+    let closeIcon = newWindows.querySelector(".close_icon")
+    if (closeIcon) {
+        closeIcon.addEventListener("click", function() {
+            closeWindow(newWindows)
+        })
+    }
+
+    return newWindows
+}
+
 
 overviewIcon.addEventListener("click", function() {
-    openWindow(overviewSection)
+    createWindows(overviewSection)
 })
 
 overviewClose.addEventListener("click", function() {
