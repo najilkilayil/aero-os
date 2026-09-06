@@ -64,8 +64,12 @@ function dragElement(element) {
     function startDragging(e) {
         e = e || window.event
         e.preventDefault()
+
+        bringToFront(element)
+        
         initialX = e.clientX
         initialY = e.clientY
+        
         document.onmouseup = stopDragging
         document.onmousemove = dragElement
     }
@@ -107,6 +111,12 @@ function closeWindow(element) {
     setTimeout(() => {
         element.style.display = "none"
     }, 1200);
+}
+
+let highesZIndex = 1000
+function bringToFront(element) {
+    highesZIndex++
+    element.style.zIndex = highesZIndex
 }
 
 let windowOffset = 0
