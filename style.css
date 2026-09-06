@@ -23,7 +23,6 @@
     --text-soft: rgba(255, 255, 255, 0.75);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
 
-
     --border-radius1: 26px;
     --border-radius2: 16px;
 }
@@ -38,7 +37,7 @@ body {
 }
 
 /* welcome */
-.welcome {
+.welcome, .overview {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -53,7 +52,7 @@ body {
     box-shadow: var(--glass-shadow);
 }
 
-.welcome_content {
+.welcome_content, .overview_content {
     margin-top: 0;
     padding: 30px;
     border-radius: var(--border-radius1);
@@ -69,7 +68,7 @@ body {
     color: var(--text-soft);
 }
 
-.welcomeheader {
+.welcomeheader, .overviewheader {
     width: 100%;
     height: 40px;
     border-radius: 16px 16px 0 0;
@@ -217,6 +216,12 @@ body {
     background: rgba(255, 255, 255, 0.24);
     transform: translateY(-3px);
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.28);
+}
+
+/* overview */
+.overview {
+    display: none;
+    width: 40%;
 }
 
 /* animtion section */

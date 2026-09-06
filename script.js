@@ -91,15 +91,29 @@ function dragElement(element) {
 let welcomeSection = document.getElementById("welcome")
 let icon = document.querySelector(".icon")
 
-dragElement(welcomeSection)
+let overviewIcon = document.getElementById("icon_1")
+let overviewSection = document.getElementById("overview")
+let overviewClose = document.getElementById("overview_close_icon")
 
-function closeWindow(element) {
-    element.style.display = "none"
-    bottomNav()
+dragElement(welcomeSection)
+dragElement(overviewSection)
+
+function openWindow(element) {
+    element.style.display = "block"
 }
 
-let welcomeClose = document.getElementById("close_icon")
+function closeWindow(element) {
+    element.id = "fade_out_anim"
+    setTimeout(() => {
+        element.style.display = "none"
+    }, 1200);
+}
 
-welcomeClose.addEventListener("click" , function() {
-    closeWindow(welcome)
+
+overviewIcon.addEventListener("click", function() {
+    openWindow(overviewSection)
+})
+
+overviewClose.addEventListener("click", function() {
+    closeWindow(overviewSection)
 })
