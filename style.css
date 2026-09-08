@@ -333,11 +333,11 @@ body {
 
 /* overview fullscreen */
 .overview_normalscreen {
-    display: none;
+    display: block;
 }
 
 .overview_fullscreen {
-    display: block;
+    display: none;
 }
 
 .overview_fullscreen .overview_content_area {

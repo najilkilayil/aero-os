@@ -383,8 +383,12 @@ function loadFlightTable(data, tableBody) {
     });
 }
 
-let departureTableBody = document.getElementById("departure_table_body")
-let arrivalTableBody = document.getElementById("arrival_table_body")
+let departureTableBody = document.querySelectorAll("#departure_table_body")
+let arrivalTableBody = document.querySelectorAll("#arrival_table_body")
 
-loadFlightTable(departureFlights, departureTableBody)
-loadFlightTable(arrivalFlights, arrivalTableBody)
+departureTableBody.forEach(tableBody => {
+    loadFlightTable(departureFlights, departureTableBody)
+})
+arrivalTableBody.forEach(tableBody => {
+    loadFlightTable(arrivalFlights, arrivalTableBody)
+})
