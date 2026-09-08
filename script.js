@@ -145,6 +145,30 @@ function createWindows(tem) {
         })
     }
 
+    let fullIcon = newWindows.querySelector(".full_icon")
+    if (fullIcon) {
+        fullIcon.addEventListener("click", function() {
+            let normalScreen
+            let fullScreen
+
+            if(tem.classList.contains("overview")) {
+                normalScreen = newWindows.querySelector(".overview_normalscreen")
+                fullScreen = newWindows.querySelector(".overview_fullscreen")
+            }
+
+            if(normalScreen && fullScreen) {
+                normalScreen.style.display = "none"
+                fullScreen.style.display = "block"
+            }
+
+            newWindows.style.width = "calc(80% + 40px)"
+            newWindows.style.height = "fit-content"
+            newWindows.style.top = "50%"
+            newWindows.style.left = "50%"
+            newWindows.style.transform = "translate(-50% , -50%)"
+        })
+    }
+
     let newDeparture = newWindows.querySelector(".overview_departure")
     let newArrival = newWindows.querySelector(".overview_arrival")
     let newContentDeparture = newWindows.querySelector(".overview_content_departure")

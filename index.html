@@ -47,7 +47,7 @@
     </div>
 
     <!-- overview -->
-     <div class="overview" id="overview">
+    <div class="overview" id="overview">
         <div class="overviewheader" id="overviewheader">
             <div class="close_icon" id="overview_close_icon"></div>
             <div class="mini_icon" id="overview_mini_icon"></div>
@@ -56,49 +56,95 @@
             <div class="heading" id="over_view_heading">Flight Overview</div>
         </div>
 
-        <div class="overview_content" id="overview_content">
-            <div class="overview_sections" id="overview_sections">
-                <div class="overview_departure" id="overview_departure">
-                    Departures
+        <div class="overview_normalscreen" id="overview_normalscreen">
+            <div class="overview_content" id="overview_content">
+                <div class="overview_sections" id="overview_sections">
+                    <div class="overview_departure" id="overview_departure">
+                        Departures
+                    </div>
+                    <div class="overview_arrival" id="overview_arrival">
+                        Arrivals
+                    </div>
                 </div>
-                <div class="overview_arrival" id="overview_arrival">
-                    Arrivals
-                </div>
-            </div>
 
-            <div class="overview_content_area" id="overview_content_area">
-                <div class="overview_content_departure" id="overview_content_departure">
+                <div class="overview_content_area" id="overview_content_area">
+                    <div class="overview_content_departure" id="overview_content_departure">
+                        <table>
+                            <tr>
+                                <th>flight</th>
+                                <th>destination</th>
+                                <th>gate</th>
+                                <th>time</th>
+                                <th></th>
+                                <th>status</th>
+                            </tr>
+
+                            <tbody id="departure_table_body"></tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="overview_content_arrival" id="overview_content_arrival">
                     <table>
                         <tr>
                             <th>flight</th>
-                            <th>destination</th>
+                            <th>from</th>
                             <th>gate</th>
                             <th>time</th>
-                            <th></th>
+                            <th> </th>
                             <th>status</th>
                         </tr>
 
-                        <tbody id="departure_table_body"></tbody>
+                        <tbody id="arrival_table_body"></tbody>
                     </table>
                 </div>
             </div>
+        </div>
 
-            <div class="overview_content_arrival" id="overview_content_arrival">
-                <table>
-                    <tr>
-                        <th>flight</th>
-                        <th>from</th>
-                        <th>gate</th>
-                        <th>time</th>
-                        <th> </th>
-                        <th>status</th>
-                    </tr>
+        <div class="overview_fullscreen" id="overview_fullscreen">
+            <div class="overview_content" id="overview_content">
+                <div class="overview_sections" id="overview_sections">
+                    <div class="overview_departure" id="overview_departure">
+                        Departures
+                    </div>
+                    <div class="overview_arrival" id="overview_arrival">
+                        Arrivals
+                    </div>
+                </div>
 
-                    <tbody id="arrival_table_body"></tbody>
-                </table>
+                <div class="overview_content_area" id="overview_content_area">
+                    <div class="overview_content_departure" id="overview_content_departure">
+                        <table>
+                            <tr>
+                                <th>flight</th>
+                                <th>destination</th>
+                                <th>gate</th>
+                                <th>time</th>
+                                <th></th>
+                                <th>status</th>
+                            </tr>
+
+                            <tbody id="departure_table_body"></tbody>
+                        </table>
+                    </div>
+                    <div class="overview_content_arrival" id="overview_content_arrival">
+                        <table>
+                            <tr>
+                                <th>flight</th>
+                                <th>from</th>
+                                <th>gate</th>
+                                <th>time</th>
+                                <th> </th>
+                                <th>status</th>
+                            </tr>
+
+                            <tbody id="arrival_table_body"></tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
-     </div>
+    </div>
     <script src="script.js"></script>
 </body>
 
