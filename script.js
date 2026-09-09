@@ -146,15 +146,18 @@ function createWindows(tem) {
     }
 
     let fullIcon = newWindows.querySelector(".full_icon")
+    let miniIcon = newWindows.querySelector(".mini_icon")
+
+    let normalScreen
+    let fullScreen
+
+    if(tem.classList.contains("overview")) {
+        normalScreen = newWindows.querySelector(".overview_normalscreen")
+        fullScreen = newWindows.querySelector(".overview_fullscreen")
+    }
+
     if (fullIcon) {
         fullIcon.addEventListener("click", function() {
-            let normalScreen
-            let fullScreen
-
-            if(tem.classList.contains("overview")) {
-                normalScreen = newWindows.querySelector(".overview_normalscreen")
-                fullScreen = newWindows.querySelector(".overview_fullscreen")
-            }
 
             if(normalScreen && fullScreen) {
                 normalScreen.style.display = "none"
@@ -166,6 +169,21 @@ function createWindows(tem) {
             newWindows.style.top = "50%"
             newWindows.style.left = "50%"
             newWindows.style.transform = "translate(-50% , -50%)"
+        })
+    }
+
+    if (miniIcon) {
+        miniIcon.addEventListener("click", function() {
+            if (normalScreen && fullScreen) {
+                normalScreen.style.display = "block"
+                fullScreen.style.display = "none"
+            }
+
+            newWindows.style.width = "40%"
+            newWindows.style.height = ""
+            newWindows.style.top = `calc(50% + ${windowOffset}px)`
+            newWindows.style.left = `calc(50% + ${windowOffset}px)`
+            newWindows.style.transform = "translate(-50%, -50%)"
         })
     }
 
@@ -387,8 +405,8 @@ let departureTableBody = document.querySelectorAll("#departure_table_body")
 let arrivalTableBody = document.querySelectorAll("#arrival_table_body")
 
 departureTableBody.forEach(tableBody => {
-    loadFlightTable(departureFlights, departureTableBody)
+    loadFlightTable(departureFlights, tableBody)
 })
 arrivalTableBody.forEach(tableBody => {
-    loadFlightTable(arrivalFlights, arrivalTableBody)
+    loadFlightTable(arrivalFlights, tableBody)
 })
