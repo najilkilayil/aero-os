@@ -391,6 +391,74 @@ body {
     width: 40%;
 }
 
+.board_content h3 {
+    color: var(--text);
+    font-size: 24px;
+}
+
+.board_fill_form {
+    display: flex;
+    flex-direction: column;
+}
+
+.board_fill_form input {
+    margin-top: 10px;
+    width: 70%;
+    height: 40px;
+    background: var(--glass-content);
+    border-radius: var(--border-radius1);
+    border: var(--glass-border-content);
+    color: var(--text);
+    padding-left: 20px;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.board_fill_form input::placeholder {
+    color: var(--text);
+}
+
+.board_fill_form input:focus {
+    outline: none;
+    border: 1px solid white;
+}
+
+#flight_select {
+    margin-top: 10px;
+    width: calc(70% + 20px);
+    height: 40px;
+    padding-left: 20px;
+    border-radius: var(--border-radius1);
+    border: var(--glass-border-full);
+    background: var(--glass-light);
+    color: var(--text);
+}
+
+#flight_select option {
+    background: #92959789;
+    color: black;
+}
+
+#flight_select:focus {
+    outline: none;
+}
+
+.board_fill_form button {
+    margin-top: 20px;
+    width: calc(70% + 20px);
+    height: 40px;
+    font-size: 18px;
+    font-weight: 700;
+    background: var(--glass-light);
+    border-radius: var(--border-radius2);
+    border: var(--glass-border-full);
+    color: var(--text);
+}
+
+.board_fill_form button:hover {
+    transform: translateY(-2px);
+}
+
 /* animtion section */
 #top_nav_show_anim {
     animation: top_nav_show 1.2s;

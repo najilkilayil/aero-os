@@ -435,3 +435,24 @@ departureFlights.forEach(flight => {
         </option>
     `
 });
+
+let boardFllBtn = document.getElementById("board_fill_btn")
+let boardFillNameInput = document.getElementById("board_fill_name_input")
+
+boardFllBtn.addEventListener("click", function() {
+    let selectedFlight = flightSelect.value
+    let boardFillName = boardFillNameInput.value
+
+    if (boardFillName === "") {
+        alert("Passenger Name is missing.")
+        return
+    }
+    if (selectedFlight === "") {
+        alert("select a flight")
+        return
+    }
+
+    let flight = departureFlights.find(
+        flight => flight.flight === selectedFlight
+    )
+})
