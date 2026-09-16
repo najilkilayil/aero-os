@@ -43,7 +43,9 @@ function bottomNav() {
 setTimeout(() => {
     bottomNav()
     welcomeSection.id = "fade_out_anim"
-    icon.id = "fade_in_anim"
+    icon.forEach(icon => {
+        icon.classList.add("fade_in_anim")
+    });
     setTimeout(() => {
         welcomeSection.style.display = "none"
     }, 1200);
@@ -93,14 +95,19 @@ function dragElement(element) {
 }
 
 let welcomeSection = document.getElementById("welcome")
-let icon = document.querySelector(".icon")
+let icon = document.querySelectorAll(".icon")
 
 let overviewIcon = document.querySelectorAll("#icon_1")
 let overviewSection = document.getElementById("overview")
 let overviewClose = document.getElementById("overview_close_icon")
 
+let boardIcon = document.querySelectorAll("#icon_2")
+let boardSection = document.getElementById("board")
+let boardClose = document.getElementById("board_close_icon")
+
 dragElement(welcomeSection)
 dragElement(overviewSection)
+dragElement(boardSection)
 
 function openWindow(element) {
     element.style.display = "block"
@@ -214,6 +221,12 @@ function createWindows(tem) {
 overviewIcon.forEach(icon => {
     icon.addEventListener("click", function() {
         createWindows(overviewSection)
+    })
+});
+
+boardIcon.forEach(icon => {
+    icon.addEventListener("click", function() {
+        createWindows(boardSection)
     })
 });
 
@@ -412,3 +425,13 @@ departureTableBody.forEach(tableBody => {
 arrivalTableBody.forEach(tableBody => {
     loadFlightTable(arrivalFlights, tableBody)
 })
+
+let flightSelect = document.getElementById("flight_select")
+
+departureFlights.forEach(flight => {
+    flightSelect.innerHTML += `
+        <option value="${flight.flight}">
+            ${flight.flight} - ${flight.place} - ${flight.time} 
+        </option>
+    `
+});
