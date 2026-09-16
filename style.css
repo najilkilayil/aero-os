@@ -186,7 +186,7 @@ body {
     border-radius: var(--border-radius2);
     display: none;
     align-items: center;
-    justify-content: center;
+    justify-content: end;
     
     background: var(--glass);
     backdrop-filter: blur(18px);
@@ -437,4 +437,18 @@ body {
         transform: translateY(100px);
         opacity: 0;
     }
+}
+
+.icon_bottom {
+    margin-right: 10px;
+    padding: 5px;
+    font-size: 20px;
+    border-radius: 10px;
+    transition: 0.5s;
+    border: 1px solid var(--glass-border);
+}
+
+.icon_bottom:hover {
+    transform: translateY(-2px);
+    border: 1px solid white;
 }

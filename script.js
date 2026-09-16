@@ -95,7 +95,7 @@ function dragElement(element) {
 let welcomeSection = document.getElementById("welcome")
 let icon = document.querySelector(".icon")
 
-let overviewIcon = document.getElementById("icon_1")
+let overviewIcon = document.querySelectorAll("#icon_1")
 let overviewSection = document.getElementById("overview")
 let overviewClose = document.getElementById("overview_close_icon")
 
@@ -211,9 +211,11 @@ function createWindows(tem) {
     return newWindows
 }
 
-overviewIcon.addEventListener("click", function() {
-    createWindows(overviewSection)
-})
+overviewIcon.forEach(icon => {
+    icon.addEventListener("click", function() {
+        createWindows(overviewSection)
+    })
+});
 
 // overviewClose.addEventListener("click", function() {
 //     closeWindow(overviewSection)
