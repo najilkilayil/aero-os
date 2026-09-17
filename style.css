@@ -10,7 +10,7 @@
     --textcolor2: orange;
     --textcolor3: yellow;
     --textcolor4: blue;
-    
+
     --glass: rgba(255, 255, 255, 0.14);
     --glass-light: rgba(255, 255, 255, 0.12);
     --glass-border: rgba(255, 255, 255, 0.28);
@@ -18,7 +18,7 @@
     --glass-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
     --glass-border-content: 1px solid rgba(255, 255, 255, 0.22);
     --glass-content: rgba(255, 255, 255, 0.06);
-    
+
     --text: #ffffff;
     --text-soft: rgba(255, 255, 255, 0.75);
     --shadow: 0 8px 32px rgba(0, 0, 0, 0.22);
@@ -37,14 +37,17 @@ body {
 }
 
 /* welcome */
-.welcome, .overview, .board {
+.welcome,
+.overview,
+.board,
+.boardpass {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     border-radius: var(--border-radius1);
     z-index: 999;
-    
+
     background: var(--glass);
     backdrop-filter: blur(25px);
     -webkit-backdrop-filter: blur(25px);
@@ -52,7 +55,10 @@ body {
     box-shadow: var(--glass-shadow);
 }
 
-.welcome_content, .overview_content, .board_content {
+.welcome_content,
+.overview_content,
+.board_content,
+.boardpass_content {
     margin-top: 0;
     padding: 30px;
     border-radius: var(--border-radius1);
@@ -68,7 +74,10 @@ body {
     color: var(--text-soft);
 }
 
-.welcomeheader, .overviewheader, .boardheader {
+.welcomeheader,
+.overviewheader,
+.boardheader,
+.boardpassheader {
     width: 100%;
     height: 40px;
     border-radius: 16px 16px 0 0;
@@ -78,7 +87,9 @@ body {
 }
 
 /* window icons */
-.close_icon, .mini_icon, .full_icon {
+.close_icon,
+.mini_icon,
+.full_icon {
     cursor: pointer;
     width: 20px;
     height: 20px;
@@ -187,7 +198,7 @@ body {
     display: none;
     align-items: center;
     justify-content: end;
-    
+
     background: var(--glass);
     backdrop-filter: blur(18px);
     -webkit-backdrop-filter: blur(18px);
@@ -263,7 +274,8 @@ body {
     justify-content: space-between;
 }
 
-.overview_departure, .overview_arrival {
+.overview_departure,
+.overview_arrival {
     height: 40px;
     width: 48%;
     border-radius: var(--border-radius1);
@@ -280,12 +292,14 @@ body {
     border: 1px solid #d5d6d7;
 }
 
-.overview_arrival:hover , .overview_departure:hover {
+.overview_arrival:hover,
+.overview_departure:hover {
     transition: 0.5s;
     border: 1px solid #d5d6d7;
 }
 
-.overview_content_departure, .overview_content_arrival {
+.overview_content_departure,
+.overview_content_arrival {
     margin-top: 30px;
     margin-left: -20px;
     margin-right: -20px;
@@ -303,13 +317,15 @@ body {
     display: none;
 }
 
-.overview_content_departure table, .overview_content_arrival table {
+.overview_content_departure table,
+.overview_content_arrival table {
     width: 100%;
     text-align: center;
     color: var(--text);
 }
 
-.overview_content_departure table th, .overview_content_arrival table th {
+.overview_content_departure table th,
+.overview_content_arrival table th {
     text-transform: uppercase;
 }
 
@@ -356,12 +372,14 @@ body {
     justify-content: space-between;
 }
 
-.overview_fullscreen .overview_departure, .overview_fullscreen .overview_arrival {
+.overview_fullscreen .overview_departure,
+.overview_fullscreen .overview_arrival {
     border: 1px solid var(--text);
     cursor: auto;
-} 
+}
 
-.overview_fullscreen .overview_content_departure, .overview_fullscreen .overview_content_arrival {
+.overview_fullscreen .overview_content_departure,
+.overview_fullscreen .overview_content_arrival {
     width: calc(48% + 20px);
     display: block;
 }
@@ -387,7 +405,7 @@ body {
 
 /* boarding pass */
 .board {
-    display: block;
+    display: none;
     width: 40%;
 }
 
@@ -459,6 +477,50 @@ body {
     transform: translateY(-2px);
 }
 
+/* board pass view */
+.boardpass {
+    display: block;
+    width: 40%;
+}
+
+.boardpass_view {
+    margin: -20px;
+    border: 1px solid var(--glass-light);
+    border-radius: var(--border-radius1);
+    background: var(--glass);
+    padding: 20px;
+}
+
+.boardpass_location, .boardpass_name, .boardpass_time, .boardpass_details {
+    border: 1px solid var(--text);
+    border-radius: var(--border-radius1);
+    display: flex;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+.boardpass_location p, .boardpass_name p {
+    color: #a9a9a9;
+}
+
+.boardpass_location h2, .boardpass_name h2, .boardpass_time h2, .boardpass_details h2 {
+    color: #ffffff;
+}
+
+.boardpass_location h3 {
+    color: #d3d3d3;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.boardpass_name, .boardpass_time, .boardpass_details {
+    margin-top: 10px;
+}
+
+.boardpass_time p, .boardpass_details p {
+    color: #d3d3d3;
+}
+
 /* animtion section */
 #top_nav_show_anim {
     animation: top_nav_show 1.2s;
@@ -469,6 +531,7 @@ body {
         width: 20%;
         top: -100px;
     }
+
     to {
         width: 20%;
     }
@@ -482,6 +545,7 @@ body {
     from {
         width: 20%;
     }
+
     tp {
         width: 80%;
     }
@@ -506,6 +570,7 @@ body {
         transform: translateY(100px);
         width: 50px;
     }
+
     to {
         width: 62%;
     }
@@ -519,6 +584,7 @@ body {
     from {
         opacity: 1;
     }
+
     to {
         top: 90%;
         opacity: 0;

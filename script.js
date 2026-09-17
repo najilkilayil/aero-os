@@ -25,7 +25,7 @@ let bottomNavBarRight = document.getElementById("bottom_nav_bar_right")
 function bottomNav() {
     bottomNavBarRight.style.display = "flex"
     bottomNavBarRight.id = "bottom_right_anim"
-    
+
     bottomNavBarLeft.id = "bottom_left_anim"
     bottomNavBarLeft.innerHTML = `
         <div class="bottom_nav_texts_left" id="bottom_nav_texts_left">
@@ -65,25 +65,31 @@ function dragElement(element) {
 
     function startDragging(e) {
         e = e || window.event
+
+        if(e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "OPTION" || e.target.tagName === "BUTTON") {
+            return
+        }
+        
         e.preventDefault()
 
         bringToFront(element)
-        
+
         initialX = e.clientX
         initialY = e.clientY
-        
+
         document.onmouseup = stopDragging
         document.onmousemove = dragElement
     }
 
     function dragElement(e) {
         e = e || window.event
+
         e.preventDefault()
         currentX = initialX - e.clientX
         currentY = initialY - e.clientY
-        initialX = e.clientX    
+        initialX = e.clientX
         initialY = e.clientY
-        
+
         element.style.top = (element.offsetTop - currentY) + "px"
         element.style.left = (element.offsetLeft - currentX) + "px"
     }
@@ -133,12 +139,12 @@ function createWindows(tem) {
     newWindows.id = tem.id + "_" + Date.now()
     document.body.appendChild(newWindows)
     newWindows.style.display = "block"
-    
+
     windowOffset += 30
     if (windowOffset > 180) {
         windowOffset = 0
     }
-    
+
     newWindows.style.top = `calc(50% + ${windowOffset}px)`
     newWindows.style.left = `calc(50% + ${windowOffset}px)`
     newWindows.style.transform = "translate(-50%, -50%)"
@@ -147,7 +153,7 @@ function createWindows(tem) {
 
     let closeIcon = newWindows.querySelector(".close_icon")
     if (closeIcon) {
-        closeIcon.addEventListener("click", function() {
+        closeIcon.addEventListener("click", function () {
             closeWindow(newWindows)
         })
     }
@@ -158,15 +164,51 @@ function createWindows(tem) {
     let normalScreen
     let fullScreen
 
-    if(tem.classList.contains("overview")) {
+    if (tem.classList.contains("overview")) {
         normalScreen = newWindows.querySelector(".overview_normalscreen")
         fullScreen = newWindows.querySelector(".overview_fullscreen")
     }
 
-    if (fullIcon) {
-        fullIcon.addEventListener("click", function() {
+    if (tem.classList.contains("board")) {
+        let newFlightSelect = newWindows.querySelector("#flight_select")
+        let newBoardFillBtn = newWindows.querySelector("#board_fill_btn")
+        let newBoardFillNameInput = newWindows.querySelector("#board_fill_name_input")
 
-            if(normalScreen && fullScreen) {
+        departureFlights.forEach(flight => {
+            newFlightSelect.innerHTML += `
+                <option value="${flight.flight}">
+                    ${flight.flight} - ${flight.place} - ${flight.time} 
+                </option>
+            `
+        });
+
+        newBoardFillBtn.addEventListener("click", function () {
+            let selectedFlight = newFlightSelect.value
+            let boardFillName = newBoardFillNameInput.value
+
+            if (boardFillName === "") {
+                alert("Passenger Name is missing.")
+                return
+            }
+            if (selectedFlight === "") {
+                alert("select a flight")
+                return
+            }
+
+            let flight = departureFlights.find(
+                flight => flight.flight === selectedFlight
+            )
+
+            alert(
+                `${boardFillName} - ${flight.flight} - ${flight.place} - ${flight.gate} - ${flight.time}`
+            )
+        })
+    }
+
+    if (fullIcon) {
+        fullIcon.addEventListener("click", function () {
+
+            if (normalScreen && fullScreen) {
                 normalScreen.style.display = "none"
                 fullScreen.style.display = "block"
             }
@@ -180,7 +222,7 @@ function createWindows(tem) {
     }
 
     if (miniIcon) {
-        miniIcon.addEventListener("click", function() {
+        miniIcon.addEventListener("click", function () {
             if (normalScreen && fullScreen) {
                 normalScreen.style.display = "block"
                 fullScreen.style.display = "none"
@@ -199,7 +241,7 @@ function createWindows(tem) {
     let newContentDeparture = newWindows.querySelector(".overview_content_departure")
     let newContentArrival = newWindows.querySelector(".overview_content_arrival")
 
-    newArrival.addEventListener("click", function() {
+    newArrival.addEventListener("click", function () {
         newContentArrival.style.display = "block"
         newContentDeparture.style.display = "none"
 
@@ -207,7 +249,7 @@ function createWindows(tem) {
         newDeparture.style.border = "1px solid rgba(255, 255, 255, 0.12)"
     })
 
-    newDeparture.addEventListener("click", function() {
+    newDeparture.addEventListener("click", function () {
         newContentArrival.style.display = "none"
         newContentDeparture.style.display = "block"
 
@@ -219,13 +261,13 @@ function createWindows(tem) {
 }
 
 overviewIcon.forEach(icon => {
-    icon.addEventListener("click", function() {
+    icon.addEventListener("click", function () {
         createWindows(overviewSection)
     })
 });
 
 boardIcon.forEach(icon => {
-    icon.addEventListener("click", function() {
+    icon.addEventListener("click", function () {
         createWindows(boardSection)
     })
 });
@@ -402,7 +444,7 @@ let arrivalFlights = [
 
 function loadFlightTable(data, tableBody) {
     tableBody.innerHTML = ""
-    
+
     data.forEach(flight => {
         tableBody.innerHTML += `
             <tr>
@@ -439,7 +481,7 @@ departureFlights.forEach(flight => {
 let boardFllBtn = document.getElementById("board_fill_btn")
 let boardFillNameInput = document.getElementById("board_fill_name_input")
 
-boardFllBtn.addEventListener("click", function() {
+boardFllBtn.addEventListener("click", function () {
     let selectedFlight = flightSelect.value
     let boardFillName = boardFillNameInput.value
 
