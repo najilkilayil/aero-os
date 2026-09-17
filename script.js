@@ -280,80 +280,90 @@ let departureFlights = [
     {
         flight: "AI203",
         place: "Tokyo",
+        code: "HND",
         gate: "A12",
         time: "17:20",
+        board: "16:50",
         icon: `<div id="status_green" class="status"></div>`,
         status: "BOARDING"
     },
     {
         flight: "EK521",
         place: "Dubai",
+        code: "DXB",
         gate: "B07",
         time: "18:05",
+        board: "17:35",
         icon: `<div id="status_green" class="status"></div>`,
         status: "ON TIME"
     },
     {
         flight: "6E742",
         place: "Mumbai",
+        code: "BOM",
         gate: "C03",
         time: "18:30",
+        board: "18:00",
         icon: `<div id="status_blue" class="status"></div>`,
         status: "DELAYED"
     },
     {
         flight: "QR517",
         place: "Doha",
+        code: "DOH",
         gate: "A08",
         time: "19:10",
+        board: "18:40",
         icon: `<div id="status_green" class="status"></div>`,
         status: "ON TIME"
     },
     {
         flight: "BA142",
         place: "London",
+        code: "LHR",
         gate: "D14",
         time: "19:45",
+        board: "19:15",
         icon: `<div id="status_yellow" class="status"></div>`,
         status: "FINAL CALL"
     },
     {
         flight: "SQ424",
         place: "Singapore",
+        code: "SIN",
         gate: "B11",
         time: "20:15",
+        board: "19:45",
         icon: `<div id="status_green" class="status"></div>`,
         status: "ON TIME"
     },
     {
-        flight: "AI672",
-        place: "Delhi",
-        gate: "C09",
-        time: "20:40",
-        icon: `<div id="status_blue" class="status"></div>`,
-        status: "DELAYED"
-    },
-    {
         flight: "EY273",
         place: "Abu Dhabi",
+        code: "AUH",
         gate: "A05",
         time: "21:05",
+        board: "20:35",
         icon: `<div id="status_green" class="status"></div>`,
         status: "BOARDING"
     },
     {
         flight: "LH759",
         place: "Frankfurt",
+        code: "FRA",
         gate: "D06",
         time: "21:35",
+        board: "21:05",
         icon: `<div id="status_red" class="status"></div>`,
         status: "CANCELLED"
     },
     {
         flight: "6E318",
         place: "Bengaluru",
+        code: "BLR",
         gate: "C15",
         time: "22:00",
+        board: "21:30",
         icon: `<div id="status_grey" class="status"></div>`,
         status: "SCHEDULED"
     }
