@@ -66,10 +66,10 @@ function dragElement(element) {
     function startDragging(e) {
         e = e || window.event
 
-        if(e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "OPTION" || e.target.tagName === "BUTTON") {
+        if (e.target.tagName === "INPUT" || e.target.tagName === "SELECT" || e.target.tagName === "OPTION" || e.target.tagName === "BUTTON") {
             return
         }
-        
+
         e.preventDefault()
 
         bringToFront(element)
@@ -111,9 +111,12 @@ let boardIcon = document.querySelectorAll("#icon_2")
 let boardSection = document.getElementById("board")
 let boardClose = document.getElementById("board_close_icon")
 
+let boardPassSection = document.getElementById("boardpass")
+
 dragElement(welcomeSection)
 dragElement(overviewSection)
 dragElement(boardSection)
+dragElement(boardPassSection)
 
 function openWindow(element) {
     element.style.display = "block"
@@ -202,6 +205,40 @@ function createWindows(tem) {
             alert(
                 `${boardFillName} - ${flight.flight} - ${flight.place} - ${flight.gate} - ${flight.time}`
             )
+
+            let newBoardPass = boardPassSection.cloneNode(true)
+            newBoardPass.id = "boardpass_" + Date.now()
+            document.body.appendChild(newBoardPass)
+
+            newBoardPass.style.display = "block"
+
+            windowOffset += 30
+            if (windowOffset > 180) {
+                windowOffset = 0
+            }
+            newBoardPass.style.left = `calc(50% + ${windowOffset}px)`
+            newBoardPass.style.top = `calc(50% + ${windowOffset}px)`
+            newBoardPass.style.transform = "translate(-50%, -50%)"
+
+            bringToFront(newBoardPass)
+            dragElement(newBoardPass)
+
+            newBoardPass.querySelector("#boardpass_pass_name h2").textContent = boardFillName
+            newBoardPass.querySelector("#boardpass_to h2").textContent = flight.place
+            newBoardPass.querySelector("#boardpass_to h3").textContent = flight.code
+            newBoardPass.querySelector("#boardpass_board_time h2").textContent = flight.board
+            newBoardPass.querySelector("#boardpass_departure_time h2").textContent = flight.time
+            newBoardPass.querySelector("#boardpass_gate h2").textContent = flight.gate
+
+            let closeIcon = newBoardPass.querySelector(".close_icon")
+            if (closeIcon) {
+                closeIcon.addEventListener("click", function () {
+                    closeWindow(newBoardPass)
+                })
+            }
+
+            newBoardFillNameInput.value = ""
+            newFlightSelect.value = ""
         })
     }
 
@@ -373,6 +410,7 @@ let arrivalFlights = [
     {
         flight: "EK520",
         place: "Dubai",
+        code: "DXB",
         gate: "B07",
         time: "17:35",
         icon: `<div id="status_green" class="status"></div>`,
@@ -381,6 +419,7 @@ let arrivalFlights = [
     {
         flight: "AI202",
         place: "Tokyo",
+        code: "HND",
         gate: "A12",
         time: "18:10",
         icon: `<div id="status_green" class="status"></div>`,
@@ -389,6 +428,7 @@ let arrivalFlights = [
     {
         flight: "QR516",
         place: "Doha",
+        code: "DOH",
         gate: "A08",
         time: "18:45",
         icon: `<div id="status_blue" class="status"></div>`,
@@ -397,6 +437,7 @@ let arrivalFlights = [
     {
         flight: "6E741",
         place: "Mumbai",
+        code: "BOM",
         gate: "C03",
         time: "19:05",
         icon: `<div id="status_blue" class="status"></div>`,
@@ -405,6 +446,7 @@ let arrivalFlights = [
     {
         flight: "SQ423",
         place: "Singapore",
+        code: "SIN",
         gate: "B11",
         time: "19:30",
         icon: `<div id="status_green" class="status"></div>`,
@@ -413,6 +455,7 @@ let arrivalFlights = [
     {
         flight: "BA141",
         place: "London",
+        code: "LHR",
         gate: "D14",
         time: "20:00",
         icon: `<div id="status_blue" class="status"></div>`,
@@ -421,6 +464,7 @@ let arrivalFlights = [
     {
         flight: "AI671",
         place: "Mumbai",
+        code: "BOM",
         gate: "C09",
         time: "20:25",
         icon: `<div id="status_green" class="status"></div>`,
@@ -429,6 +473,7 @@ let arrivalFlights = [
     {
         flight: "EY272",
         place: "Abu Dhabi",
+        code: "AUH",
         gate: "A05",
         time: "20:50",
         icon: `<div id="status_blue" class="status"></div>`,
@@ -437,18 +482,11 @@ let arrivalFlights = [
     {
         flight: "LH758",
         place: "Frankfurt",
+        code: "FRA",
         gate: "D06",
         time: "21:20",
         icon: `<div id="status_green" class="status"></div>`,
         status: "LANDED",
-    },
-    {
-        flight: "6E317",
-        place: "Bengaluru",
-        gate: "C15",
-        time: "21:55",
-        icon: `<div id="status_blue" class="status"></div>`,
-        status: "APPROACHING",
     },
 ]
 
@@ -459,7 +497,7 @@ function loadFlightTable(data, tableBody) {
         tableBody.innerHTML += `
             <tr>
                 <td>${flight.flight}</td>
-                <td>${flight.place}</td>
+                <td>${flight.place} ( ${flight.code} )</td>
                 <td>${flight.gate}</td>
                 <td>${flight.time}</td>
                 <td>${flight.icon}</td>
@@ -507,4 +545,38 @@ boardFllBtn.addEventListener("click", function () {
     let flight = departureFlights.find(
         flight => flight.flight === selectedFlight
     )
+
+    let newBoardPass = boardPassSection.cloneNode(true)
+    newBoardPass.id = "boardpass_" + Date.now()
+    document.body.appendChild(newBoardPass)
+
+    newBoardPass.style.display = "block"
+
+    windowOffset += 30
+    if (windowOffset > 180) {
+        windowOffset = 0
+    }
+    newBoardPass.style.left = `calc(50% + ${windowOffset}px)`
+    newBoardPass.style.top = `calc(50% + ${windowOffset}px)`
+    newBoardPass.style.transform = "translate(-50%, -50%)"
+
+    bringToFront(newBoardPass)
+    dragElement(newBoardPass)
+
+    newBoardPass.querySelector("#boardpass_pass_name h2").textContent = boardFillName
+    newBoardPass.querySelector("#boardpass_to h2").textContent = flight.place
+    newBoardPass.querySelector("#boardpass_to h3").textContent = flight.code
+    newBoardPass.querySelector("#boardpass_board_time h2").textContent = flight.board
+    newBoardPass.querySelector("#boardpass_departure_time h2").textContent = flight.time
+    newBoardPass.querySelector("#boardpass_gate h2").textContent = flight.gate
+
+    let closeIcon = newBoardPass.querySelector(".close_icon")
+    if (closeIcon) {
+        closeIcon.addEventListener("click", function () {
+            closeWindow(newBoardPass)
+        })
+    }
+
+    boardFillNameInput.value = ""
+    flightSelect.value = ""
 })

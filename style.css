@@ -479,7 +479,7 @@ body {
 
 /* board pass view */
 .boardpass {
-    display: block;
+    display: none;
     width: 40%;
 }
 
