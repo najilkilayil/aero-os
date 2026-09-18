@@ -31,7 +31,7 @@ function bottomNav() {
         <div class="bottom_nav_texts_left" id="bottom_nav_texts_left">
             <p>Terminal 2</p>
             <p id="bottom_location_p">Delhi</p>
-            <p id="bottom_weather_p">21</p>
+            <p id="bottom_weather_p">🌤️ Loading...</p>
         </div>
     `
 
@@ -40,8 +40,61 @@ function bottomNav() {
     }, 1200);
 }
 
+async function updateWeather() {
+    let weatherP = document.getElementById("bottom_weather_p")
+
+    let latitude = 28.5562
+    let longitude = 77.1000
+
+    try {
+        let response = await fetch(
+            `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,weather_code,is_day&timezone=Asia%2FKolkata`
+        );
+        let data = await response.json()
+
+        let temperature = Math.round(data.current.temperature_2m)
+        let weatherCode = data.current.weather_code
+        let isDay = data.current.is_day
+
+        let emoji = "🌤️"
+        if (weatherCode === 0) {
+            emoji = isDay ? "☀️" : "🌙"
+        }
+        else if (weatherCode === 1 || weatherCode === 2) {
+            emoji = isDay ? "🌤️" : "☁️"
+        }
+        else if (weatherCode === 3) {
+            emoji = "☁️"
+        }
+        else if (weatherCode === 45 || weatherCode === 48) {
+            emoji = "🌫️"
+        }
+        else if (weatherCode === 51 || weatherCode === 53 || weatherCode === 55 || weatherCode === 56 || weatherCode === 57) {
+            emoji = "🌦️"
+        }
+        else if (weatherCode === 61|| weatherCode === 63 || weatherCode === 65 || weatherCode === 66 || weatherCode === 67) {
+            emoji = "🌧️"
+        }
+        else if (weatherCode === 71 || weatherCode === 73 || weatherCode === 75 || weatherCode === 77) {
+            emoji = "❄️"
+        }
+        else if (weatherCode === 80 || weatherCode === 81 || weatherCode === 82) {
+            emoji = "🌦️"
+        }
+        else if (weatherCode === 95 || weatherCode === 96 || weatherCode === 99) {
+            emoji = "⛈️"
+        }
+
+        weatherP.textContent = `${emoji} ${temperature}°C`
+    } catch (error) {
+        weatherP.textContent = "🌡️ --°C"
+    }
+}
+
 setTimeout(() => {
     bottomNav()
+    updateWeather()
+
     welcomeSection.id = "fade_out_anim"
     icon.forEach(icon => {
         icon.classList.add("fade_in_anim")
@@ -202,10 +255,6 @@ function createWindows(tem) {
                 flight => flight.flight === selectedFlight
             )
 
-            alert(
-                `${boardFillName} - ${flight.flight} - ${flight.place} - ${flight.gate} - ${flight.time}`
-            )
-
             let newBoardPass = boardPassSection.cloneNode(true)
             newBoardPass.id = "boardpass_" + Date.now()
             document.body.appendChild(newBoardPass)
@@ -223,6 +272,15 @@ function createWindows(tem) {
             bringToFront(newBoardPass)
             dragElement(newBoardPass)
 
+            let today = new Date()
+            let day = String(today.getDate()).padStart(2, "0")
+            let month = today.toLocaleString("en-US", {
+                month: "short"
+            }).toUpperCase()
+            let year = today.getFullYear()
+            let realDate = `${day} ${month} ${year}`
+
+            newBoardPass.querySelector("#boardpass_date h2").textContent = realDate
             newBoardPass.querySelector("#boardpass_pass_name h2").textContent = boardFillName
             newBoardPass.querySelector("#boardpass_to h2").textContent = flight.place
             newBoardPass.querySelector("#boardpass_to h3").textContent = flight.code
@@ -518,13 +576,13 @@ arrivalTableBody.forEach(tableBody => {
 
 let flightSelect = document.getElementById("flight_select")
 
-departureFlights.forEach(flight => {
-    flightSelect.innerHTML += `
-        <option value="${flight.flight}">
-            ${flight.flight} - ${flight.place} - ${flight.time} 
-        </option>
-    `
-});
+// departureFlights.forEach(flight => {
+//     flightSelect.innerHTML += `
+//         <option value="${flight.flight}">
+//             ${flight.flight} - ${flight.place} - ${flight.time} 
+//         </option>
+//     `
+// });
 
 let boardFllBtn = document.getElementById("board_fill_btn")
 let boardFillNameInput = document.getElementById("board_fill_name_input")

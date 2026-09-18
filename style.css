@@ -487,7 +487,6 @@ body {
     margin: -20px;
     border: 1px solid var(--glass-light);
     border-radius: var(--border-radius1);
-    background: var(--glass);
     padding: 20px;
 }
 
@@ -497,6 +496,7 @@ body {
     display: flex;
     padding: 20px;
     justify-content: space-between;
+    background: var(--glass-light);
 }
 
 .boardpass_location p, .boardpass_name p {
