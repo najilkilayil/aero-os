@@ -13,6 +13,7 @@ The user can easily access and explore the OS for free, without any downloading 
 - Multiple windows
 - Close, Fullscreen, Miniscreen buttons are available
 - Apps can drag as where you need
+- Real weather information.
 
 ## Instructions
 AeroOS is 100% safe from virus and we provide users experience and safety more valuable! For that we only accessing user's time and date only.
@@ -28,9 +29,10 @@ Copied the background image from bing image search and asked help of ChatGPT for
 
 Maximum tried to avoid complicated codes and logics. For making to understand even for non-programming users.
 
-Also tried maximum to solve bugs and logical error without using help of any Ai but used reference of Google for understanding some logics.
+Also tried maximum to solve bugs and logical error without using help of any Ai but used reference of Google for understanding some logics but for App2 used Ai for understanding logics needed.
 
 ## Credits
-- Google :- For research to understant some logics
+- Google :- For research to understant some logics, collect longitude and latitude
 - Microsoft Bing :- Downloaded background image
-- ChatGPT :- For choosing colour palette
+- ChatGPT :- For choosing colour palette, Solved bugs and understanding the logics.
+- Open Mereo :- API for weather information.
